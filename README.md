@@ -1,4 +1,5 @@
-# Blockfacts NodeJS SDK
+![alt text](https://blockfacts.io/img/logo/bf-logo@2x.png "BlockFacts official logo")
+# BlockFacts NodeJS SDK
 Official BlockFacts Node.js SDK including Rest and WebSocket API support.
 
 [![npm version](https://badge.fury.io/js/blockfacts-sdk.svg)](https://badge.fury.io/js/blockfacts-sdk)

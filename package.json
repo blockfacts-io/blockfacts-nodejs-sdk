@@ -1,6 +1,6 @@
 {
   "name": "blockfacts-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official BlockFacts Node.js SDK including Rest and WebSocket API support",
   "main": "index.js",
   "keywords": [
