@@ -19,8 +19,16 @@
     "ethereum",
     "litecoin"
   ],
-  "author": "Blockfacts Ltd.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockfacts-io/blockfacts-nodejs-sdk.git"
+  },
+  "author": "Blockfacts Ltd. <contact@blockfacts.io>",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockfacts-io/blockfacts-nodejs-sdk/issues"
+  },
+  "homepage": "https://docs.blockfacts.io",
   "dependencies": {
     "node-fetch": "^2.6.0",
     "ws": "^7.1.2"
