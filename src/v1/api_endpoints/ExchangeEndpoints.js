@@ -65,6 +65,38 @@ class ExchangeEndpoints extends Endpoints {
   }
 
   /**
+   * Gets 20 latest trades that happened on the requested exchanges and pairs.
+   * @param {any} assets Asset array or comma-separated string.
+   * @param {any} denominators Denominator array or comma-separated string.
+   * @param {any} exchanges Exchange array or comma-separated string.
+   * Reference: https://docs.blockfacts.io/#snapshot-trade-data
+   */
+  getSnapshotTradeData(assets, denominators, exchanges) {
+    var assetsString = "";
+    var denominatorsString = "";
+    var exchangesString = "";
+
+    if(Array.isArray(assets))
+    assetsString = assets.join(',');
+    else assetsString = assets;
+
+    if(Array.isArray(denominators))
+    denominatorsString = denominators.join(',');
+    else denominatorsString = denominators;
+
+    if(Array.isArray(exchanges))
+    exchangesString = exchanges.join(',');
+    else exchangesString = exchanges;
+
+    assetsString = assetsString.replace(/ /g,'');
+    denominatorsString = denominatorsString.replace(/ /g,'');
+    exchangesString = exchangesString.replace(/ /g,'');
+
+    return fetch(`https://api.blockfacts.io/api/v1/exchanges/trades/snapshot?asset=${assetsString}&denominator=${denominatorsString}&exchange=${exchangesString}`, { headers: this.headers })
+    .then(response => response.json())
+  }
+
+  /**
    * Gets exchange historical price by asset-denominator, exchange, date, time and interval.
    * @param {string} asset 
    * @param {string} denominator 

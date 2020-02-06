@@ -30,7 +30,7 @@ To start using our SDK just require the package and pass the `API-KEY` and `API-
 ```js
 const Blockfacts = require('blockfacts-sdk');
 const key = 'your-api-key';
-const secret = 'your-api-secret'
+const secret = 'your-api-secret';
 
 var restClient = new Blockfacts.RestClient(key, secret);
 var websocketClient = new Blockfacts.WebSocketClient(key, secret);
@@ -83,6 +83,18 @@ restClient.blockfacts.getCurrentData(["BTC", "ETH"], ["USD", "EUR"]).then(respon
 // OR
 
 restClient.blockfacts.getCurrentData("BTC, ETH", "USD, EUR").then(response => console.log(response))
+```
+
+### Snapshot data
+Get last 20 BLOCKFACTS normalized prices for provided asset-denominator pairs.
+- [`getSnapshotData(assets, denominators)`](https://docs.blockfacts.io/#data-snapshot)
+
+```js
+restClient.blockfacts.getSnapshotData(["BTC", "ETH"], ["USD", "EUR"]).then(response => console.log(response))
+
+// OR
+
+restClient.blockfacts.getSnapshotData("BTC, ETH", "USD, EUR").then(response => console.log(response))
 ```
 
 ### Historical data
@@ -151,6 +163,18 @@ restClient.exchanges.getCurrentTradeData(["BTC", "ETH"], ["USD", "GBP"], ["krake
 restClient.exchanges.getCurrentTradeData("BTC, ETH", "USD, GBP", "kraken, coinbase").then(response => console.log(response))
 ```
 
+### Snapshot trade data
+Get 20 latest trades that happened on the requested exchanges and pairs.
+- [`getSnapshotTradeData(assets, denominators, exchanges)`](https://docs.blockfacts.io/#snapshot-trade-data)
+
+```js
+restClient.exchanges.getSnapshotTradeData(["BTC", "ETH"], ["USD", "GBP"], ["kraken", "coinbase"]).then(response => console.log(response))
+
+// OR
+
+restClient.exchanges.getSnapshotTradeData("BTC, ETH", "USD, GBP", "kraken, coinbase").then(response => console.log(response))
+```
+
 ### Historical trade data
 Get exchange historical price by asset-denominator, exchange, date, time and interval.
 - [`getHistoricalTradeData(asset, denominator, exchanges, date, time, interval, page)`](https://docs.blockfacts.io/#historical-trade-data)
@@ -217,6 +241,10 @@ websocketClient.subscribe(subscribeMsg, (data) => {
 
   if (data.type == 'error') {
     // Handle error
+  }
+
+  if (data.type == 'snapshot') {
+    // Handle snapshot
   }
 
   if (data.type == 'heartbeat') {

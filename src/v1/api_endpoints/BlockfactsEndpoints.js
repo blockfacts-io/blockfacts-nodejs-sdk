@@ -56,6 +56,31 @@ class BlockfactsEndpoints extends Endpoints {
     .then(response => response.json())
   }
 
+    /**
+   * Gets last 20 BLOCKFACTS normalized prices for provided asset-denominator pairs.
+   * @param {any} asset Asset array or comma-separated string.
+   * @param {any} denominator Denominator array or comma-separated string.
+   * Reference: https://docs.blockfacts.io/#data-snapshot
+   */
+  getSnapshotData(assets, denominators) {
+    var assetsString = "";
+    var denominatorsString = "";
+
+    if(Array.isArray(assets))
+    assetsString = assets.join(',');
+    else assetsString = assets;
+
+    if(Array.isArray(denominators))
+    denominatorsString = denominators.join(',');
+    else denominatorsString = denominators;
+
+    assetsString = assetsString.replace(/ /g,'');
+    denominatorsString = denominatorsString.replace(/ /g,'');
+
+    return fetch(`https://api.blockfacts.io/api/v1/blockfacts/price/snapshot?asset=${assetsString}&denominator=${denominatorsString}`, { headers: this.headers })
+    .then(response => response.json())
+  }
+
   /**
    * Gets historical normalization data by asset-denominator, date, time and interval.
    * @param {string} asset 
