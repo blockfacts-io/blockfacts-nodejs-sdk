@@ -86,7 +86,7 @@ restClient.blockfacts.getCurrentData("BTC, ETH", "USD, EUR").then(response => co
 ```
 
 ### Snapshot data
-Get last 20 BLOCKFACTS normalized prices for provided asset-denominator pairs.
+Get last 600 BLOCKFACTS normalized prices for provided asset-denominator pairs.
 - [`getSnapshotData(assets, denominators)`](https://docs.blockfacts.io/#data-snapshot)
 
 ```js
@@ -164,7 +164,7 @@ restClient.exchanges.getCurrentTradeData("BTC, ETH", "USD, GBP", "kraken, coinba
 ```
 
 ### Snapshot trade data
-Get 20 latest trades that happened on the requested exchanges and pairs.
+Get 600 latest trades that happened on the requested exchanges and pairs.
 - [`getSnapshotTradeData(assets, denominators, exchanges)`](https://docs.blockfacts.io/#snapshot-trade-data)
 
 ```js
@@ -234,6 +234,10 @@ var subscribeMsg = JSON.stringify({
 websocketClient.subscribe(subscribeMsg, (data) => {
   data = JSON.parse(data);
   console.log(data);
+
+  if(data.type == 'subscribed') {
+    // Handle subscribed event
+  }
 
   if(data.type == 'ping') {
     websocketClient.pong();
