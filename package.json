@@ -1,0 +1,36 @@
+{
+  "name": "blockfacts-sdk",
+  "version": "1.0.5",
+  "description": "Official BlockFacts Node.js SDK including Rest and WebSocket API support",
+  "main": "index.js",
+  "keywords": [
+    "blockfacts",
+    "nodejs",
+    "sdk",
+    "crypto-api",
+    "api",
+    "cryptocurrency",
+    "crypto",
+    "asset",
+    "unified api",
+    "blockchain",
+    "trade",
+    "bitcoin",
+    "ethereum",
+    "litecoin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockfacts-io/blockfacts-nodejs-sdk.git"
+  },
+  "author": "Blockfacts Ltd. <contact@blockfacts.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockfacts-io/blockfacts-nodejs-sdk/issues"
+  },
+  "homepage": "https://docs.blockfacts.io",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "ws": "^7.1.2"
+  }
+}
